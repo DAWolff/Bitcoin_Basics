@@ -1,5 +1,9 @@
+'use strict'
+
 const BITCOIN_API_URL = 'https://api.coinhills.com/v1/cspa/btc/'   
 var SELECTED_CURRENCY = "";  // cspa/btc/usd/'
+var SELECTED_CURRENCY_NAME = "";
+var SELECTED_CURRENCY_SYM = "";
 var CSPA_VALUE_CCY = 0;
 var CSPA_CHANGE_24H = 0;
 var CSPA_CHANGE_24H_PCT = 0;
@@ -36,19 +40,21 @@ function getDataFromApi(ccy) {
 }
 
 
-// function renderResult(result) {
-//   return `
-//       <div class="thumbnail tooltip">
-//         <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
-//           <img src="${result.snippet.thumbnails.medium.url}" alt="thumbnail from youtube">
-//         </a>
-//         <span class="tooltiptext">${result.snippet.title}</span></div>
-//   `;
-// }
+function renderResult(result) {     
+  return `
+      <div class="thumbnail tooltip">
+        <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
+          <img src="${result.snippet.thumbnails.medium.url}" alt="thumbnail from youtube">
+        </a>
+        <span class="tooltiptext">${result.snippet.title}</span></div>
+  `;
+}
 
 function getDefaultCcy() {
 
   SELECTED_CURRENCY = $('#currencies').val();
+  SELECTED_CURRENCY_NAME = "US Dollar";
+  SELECTED_CURRENCY_SYM = "$";
   getDataFromApi(SELECTED_CURRENCY);
 
   FA_LOGO_CLASS = "fa-" + SELECTED_CURRENCY; 
@@ -61,8 +67,12 @@ function getDefaultCcy() {
 
 function watchCcyChange() {
 
-  $('#currencies').on('change', function() {
+  $('#currencies').on('change', function(e) {
     SELECTED_CURRENCY = this.value;
+    var ccyId = document.getElementById("currencies");
+    SELECTED_CURRENCY_NAME = ccyId.options[ccyId.selectedIndex].text;
+    SELECTED_CURRENCY_SYM = ccyId.options[ccyId.selectedIndex].getAttribute('data-ccy');
+
     getDataFromApi(SELECTED_CURRENCY);
 
     $('#ccyLogo').removeClass(FA_LOGO_CLASS);
@@ -70,8 +80,6 @@ function watchCcyChange() {
     FA_LOGO_CLASS = "fa-" + SELECTED_CURRENCY; 
 
     $('#ccyLogo').addClass(FA_LOGO_CLASS);
-
-    console.log('ccy change ' + FA_LOGO_CLASS);
   });
 }
 
