@@ -1,0 +1,155 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Roboto', sans-sarif;
+  font-weight: bold;
+  background-color: black;
+  color: #FEFEFE;   
+  text-shadow: 0 1px 0 black;
+/*  background-image: 
+    linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ),
+  url(images/bitcoin-fire.jpg);
+  background-size: cover;*/
+}
+
+.headerReplacement {
+   text-indent: -9999px;
+   width: 90%;
+   height: 100%;
+/*   background: url(images/bitcoin-header.jpg) black no-repeat;  */
+   background-image: url(images/bitcoin-header.jpg); 
+   background-position: 100% 100%;
+   background-repeat: no-repeat;
+}
+
+/*header {
+  display: block;
+}
+
+#content_title h1 {
+  padding-top: 1em;
+  margin: 0px;
+  width:55em;
+  height:2.7em
+}
+
+#content_title {
+  margin-bottom: 1em;
+  overflow: hidden;
+  height: 3.7em;
+/*  border-bottom: 0.1em dashed #369;*/
+/*‘*/
+
+
+
+
+
+
+/*.thumbnail {
+  display: inline-block;
+  width: 80%;
+  height: 50px;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 7px;
+  margin: 10% auto;
+  background: blue;
+} */
+
+/*.clearfix {
+  height: 100%;
+
+}*/
+/*
+header {
+  height: 1%;
+  border-bottom: 3px solid #400000;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+/*  padding: 5px;   
+  margin: 10px, 0;  */
+/*}*/ 
+
+.side {
+    float: right; 
+    padding: 3%;
+    background-color: black;
+    width: 25%;
+    height: 100%;
+    border-left: 3px solid #400000;
+}
+
+.side-content {
+    background-color: #FEFEFE;
+    color: black; 
+}
+
+/*.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}*/
+
+html {
+  background-image: 
+    linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ),
+  url(images/bitcoin-fire.jpg);
+  background-size: cover;
+}
+
+.main-content {
+  margin: 0;
+  width: 75%;
+/*  height: 100%;*/
+  padding-left: 7%; 
+}
+
+ 
+
+#currencies {
+/*  background-color: #FEFEFE;
+  color: #000;*/
+  background-color: #000;
+  color: #FEFEFE;
+  height: 50px;
+  padding: .1em;
+  font-size: 1.5em;
+}
+
+.js-search-form {
+  margin-top: 5%;
+
+}
+.js-result-bitcoin {
+  color: #FEFEFE;
+  font-size: 2em;
+
+}
+
+.results {
+  height: 50px;
+  width: 30%;
+  font-size: 2em;
+  display: inline-block;
+ 
+/*  font-size: 1.5em;*/
+}
+
+.data {
+  border: 1px solid #FEFEFE;
+  border-radius: 4px;
+  padding: .3em;
+}
+
+.center {
+  text-align: center;
+}

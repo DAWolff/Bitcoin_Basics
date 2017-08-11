@@ -1,85 +1,144 @@
 'use strict'
 
-const BITCOIN_API_URL = 'https://api.coinhills.com/v1/cspa/btc/'   
+const BITCOIN_API_URL = 'https://api.coinhills.com/v1/cspa/'   
+const BITCOIN_SYMBOL = '&#3647'
+const USD_SYMBOL = '&#36'
 var SELECTED_CURRENCY = "";  // cspa/btc/usd/'
 var SELECTED_CURRENCY_NAME = "";
 var SELECTED_CURRENCY_SYM = "";
-var CSPA_VALUE_CCY = 0;
+var CSPA_CCY_VALUE = 0;
 var CSPA_CHANGE_24H = 0;
 var CSPA_CHANGE_24H_PCT = 0;
-var CSPA_VALUE_BTC = 0;
-var FA_LOGO_CLASS = "";
+var CSPA_BTC_VALUE = 0;
+var FROM_BITCOIN_AMT = "1";
+var FROM_CCY_AMT = "1.00";
 
+
+
+function renderErrorResult (msg) {
+    alert(msg);
+}
 
 
 function extractResults(json) {
-      // "cspa": 2701.4111675,
-      // "cspa_change_24h": -40.35186543,
-      // "cspa_change_24h_pct": -1.47,
-      // "volume_btc_24h": 93497.33,
-      // "volume_usd_24h": 252574730.2,
-      // "updated": 1501701529
+
+  console.log("extractResults ran");
+
+  if (!json.success) {
+    console.log("JSON Message", JSON.stringify(json));
+    renderErrorResult(json.message);
+    return;
+  } 
+
   let cspaKey = "CSPA:BTC/" + SELECTED_CURRENCY.toUpperCase(); 
-  // CSPA_VALUE_CCY = json.data["CSPA:BTC/USD"].cspa;
-  CSPA_VALUE_CCY = json.data[cspaKey].cspa;
+  CSPA_CCY_VALUE = Number(json.data[cspaKey].cspa);
+  CSPA_CCY_VALUE =   Math.round(CSPA_CCY_VALUE * 100) / 100;   // round to 2 decimals
   CSPA_CHANGE_24H = json.data[cspaKey].cspa_change_24h;
   CSPA_CHANGE_24H_PCT = json.data[cspaKey].cspa_change_24h_pct;
 
-  CSPA_VALUE_BTC = 1/CSPA_VALUE_CCY; 
+  console.log(SELECTED_CURRENCY + ": " + CSPA_CCY_VALUE);
 
-  console.log(CSPA_VALUE_CCY);
+  // renderResults();
 }
 
 
-function getDataFromApi(ccy) {
-    var bitcoinApi = BITCOIN_API_URL + ccy + '/?callback=extractResults';
-    var script = document.createElement('script');
-    script.src = bitcoinApi;
-    document.body.appendChild(script);
-    script.parentNode.removeChild(script);
+function extractSecondResults(json) {
+
+  console.log("extractSecondResults ran");
+
+  if (!json.success) {
+    console.log("JSON Message", JSON.stringify(json));
+    renderErrorResult(json.message);
+    return;
+  } 
+
+  let cspaKey = "CSPA:" + SELECTED_CURRENCY.toUpperCase() + "/BTC"; 
+  CSPA_BTC_VALUE = json.data[cspaKey].cspa;
+
+  console.log("call 2 BTC " + SELECTED_CURRENCY + ": " + CSPA_BTC_VALUE);
+
+  renderResults();
 }
 
 
-function renderResult(result) {     
-  return `
-      <div class="thumbnail tooltip">
-        <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
-          <img src="${result.snippet.thumbnails.medium.url}" alt="thumbnail from youtube">
-        </a>
-        <span class="tooltiptext">${result.snippet.title}</span></div>
-  `;
+function getDataFromApi(ccy) { 
+
+    console.log("getDataFromApi ran");
+
+    var fromBitcoinApiUrl = BITCOIN_API_URL + 'btc/' + ccy + '/?callback=extractResults';
+    var fromBitcoinApiScript = document.createElement('script');
+    fromBitcoinApiScript.src = fromBitcoinApiUrl;
+    document.body.appendChild(fromBitcoinApiScript);
+    fromBitcoinApiScript.parentNode.removeChild(fromBitcoinApiScript);
+
+//  Call again for CCY ==> BTC conversion 
+
+    var toBitcoinApiUrl = BITCOIN_API_URL + ccy + '/btc/?callback=extractSecondResults';
+    var toBitcoinApiScript = document.createElement('script');
+    toBitcoinApiScript.src = toBitcoinApiUrl;
+    document.body.appendChild(toBitcoinApiScript);
+    toBitcoinApiScript.parentNode.removeChild(toBitcoinApiScript);
+
 }
+
+
+function renderResults() {     
+
+  console.log("renderResults ran");
+
+  let results = 
+    '<div class="js-results-bitcoin">' +
+    ' <p class="line1">' + 
+    '   <div class="results label">Bitcoin</div>' + 
+    '   <div class="results label center"></div>' + 
+    '   <div class="results label" id="js-to-ccy-lbl">' + SELECTED_CURRENCY_NAME + '</div>' +
+    ' </p>' +
+    ' <p>' + 
+    '   <div class="results data" id="js-from-bitcoin-amt">' + BITCOIN_SYMBOL + '&nbsp' + 
+              FROM_BITCOIN_AMT + '</div>' +   
+    '   <div class="results label center"> = </div>' +
+    '   <div class="results data" id="js-to-ccy-amt">' + USD_SYMBOL + '&nbsp' + CSPA_CCY_VALUE + '</div>' +
+    ' </p>' +
+    '</div>' + 
+    '<div class="js-results-ccy2">' +
+    ' <p class="line2">' +
+    '   <div class="results label" id="js-from-ccy-lbl">' + SELECTED_CURRENCY_NAME + '</div>' +
+    '   <div class="results label center"></div>' +
+    '   <div class="results label">Bitcoin</div>' + 
+    ' </p>' +
+    ' <p>' +
+    '   <div class="results data" id="js-from-ccy-amt">' + USD_SYMBOL + '&nbsp' + FROM_CCY_AMT + '</div>' +
+    '   <div class="results label center"> = </div>' + 
+    '   <div class="results data" id="js-to-bitcoin-amt">' + BITCOIN_SYMBOL + '&nbsp' + 
+            CSPA_BTC_VALUE + '</div>' + 
+    ' </p>' + 
+    '</div>' ; 
+
+  $('.js-results').html(results);
+}
+
 
 function getDefaultCcy() {
 
+  console.log("getDefaultCcy ran");
+
   SELECTED_CURRENCY = $('#currencies').val();
   SELECTED_CURRENCY_NAME = "US Dollar";
-  SELECTED_CURRENCY_SYM = "$";
+  SELECTED_CURRENCY_SYM = "&#36";
   getDataFromApi(SELECTED_CURRENCY);
-
-  FA_LOGO_CLASS = "fa-" + SELECTED_CURRENCY; 
-
-  $('#ccyLogo').addClass(FA_LOGO_CLASS);
-
-    console.log('default ' + FA_LOGO_CLASS);
 }
 
 
 function watchCcyChange() {
 
   $('#currencies').on('change', function(e) {
+    console.log("watchCcyChange fired");
     SELECTED_CURRENCY = this.value;
     var ccyId = document.getElementById("currencies");
     SELECTED_CURRENCY_NAME = ccyId.options[ccyId.selectedIndex].text;
     SELECTED_CURRENCY_SYM = ccyId.options[ccyId.selectedIndex].getAttribute('data-ccy');
 
     getDataFromApi(SELECTED_CURRENCY);
-
-    $('#ccyLogo').removeClass(FA_LOGO_CLASS);
-
-    FA_LOGO_CLASS = "fa-" + SELECTED_CURRENCY; 
-
-    $('#ccyLogo').addClass(FA_LOGO_CLASS);
   });
 }
 

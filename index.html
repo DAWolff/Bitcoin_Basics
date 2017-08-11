@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width">
         <meta name="description" content="Bitcoin Info">
         <title>Bitcoin ForEx</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="main.css" rel="stylesheet" type="text/css" />
+        <link href="float-grid.css" rel="stylesheet" type="text/css" />
         <script
           src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -16,82 +17,91 @@
     </head>
     
     <body>
+      <main>
 
-      <header class="header">
-        <h1>Bitcoin Currency Exchange Rate</h1>
-      </header>
+        <header role="banner" class="row">
+          <div class="col-12">
+            <div class="box"> 
+              <h1 class="header-replacement">Bitcoin Currency Exchange Rate</h1>
+            </div>   
+          </div>   
+        </header>
+        
+        <div class="row main-content">
 
-      <div class="clearfix">
+          <div class="col-8">
 
-        <div class="side">
-            <span>Bitcoin Basics: A Video Tutorial</span>
-            <a href="https://www.youtube.com/watch?annotation_id=annotation_2959030587&feature=iv&src_vid=yTxmR0n6sCc&v=R2zXZOsPQ1Q" target="_blank">
-              <img src="images/thumbnail.png" alt="Youtube: Bitcoin for Dummies">
-            </a>
-        </div>
+            <div class="box">
+               <form action="#" class="js-search-form">
+                <select id="currencies">        
+                  <option value="usd" data-ccy="&#36">US Dollar</option>
+                  <option value="jpy" data-ccy="&#165">Japanese Yen</option>
+                  <option value="cny" data-ccy="&#165">Chinese Yuan</option>
+                  <option value="eur" data-ccy="&#8364">European Euro</option>
+                  <option value="krw" data-ccy="&#8361">Korean Won</option>
+                  <option value="gbp" data-ccy="&#163">British Pound</option> 
+                  <option value="rub" data-ccy="py6">Russian Ruble</option> 
+                  <option value="aud" data-ccy="A&#36">Australian Dollar</option>
+                  <option value="pln" data-ccy="&#164">Polish Zloty</option>  
+                  <option value="brl" data-ccy="R&#36">Brazilian Real</option>
+                  <option value="idr" data-ccy="Rp">Indonesian Rupiah</option> 
+                  <option value="cad" data-ccy="C&#36">Canadian Dollar</option> 
+                  <option value="mxn" data-ccy="&#8369">Mexican Peso</option>  
+                  <option value="zar" data-ccy="R">South African Rand</option>  
+                  <option value="thb" data-ccy="&#3647">Thai Baht</option> 
+                  <option value="ngn" data-ccy="&#8358">Nigerian Naira</option>  
+                  <option value="myr" data-ccy="RM">Malaysian Ringgit</option> 
+                  <option value="try" data-ccy="TL">Turkish Lira</option>
+                  <option value="vef" data-ccy="Bs">Venezuelan Bolivar</option>
+                  <option value="inr" data-ccy="&#8377">Indian Rupee</option>
+                  <option value="uah" data-ccy="&#8372">Ukranian Hryvnia</option> 
+                  <option value="sgd" data-ccy="S&#36">Singapore Dollar</option> 
+                  <option value="czk" data-ccy="&#164">Czech Koruna</option>
+                  <option value="pkr" data-ccy="RS">Pakistani Rupee</option>  
+                  <option value="hkd" data-ccy="HK&#36">Hong Kong Dollar</option>
+                  <option value="nzd" data-ccy="NZ&#36">New Zeland Dollar</option> 
+                  <option value="ils" data-ccy="&#8362">Israeli Shekel</option> 
+                  <option value="cop" data-ccy="&#36">Colombian Peso</option>  
+                  <option value="sek" data-ccy="kr">Swedish Krona</option>  
+                  <option value="nok" data-ccy="kr">Norwegian Krone</option> 
+                  <option value="kes" data-ccy="KSh">Kenyan Shilling</option>  
+                  <option value="ron" data-ccy="L">Romanian Leu</option>  
+                </select>
+              </form>
+                    
+              <div class="js-results"></div>                
+            
+            </div>   <!-- main-content  -->
+          </div>    <!-- col-8 -->
 
-        <main class="content">
-                <form action="#" class="js-search-form">
+          <div class="col-3">
+            <div class="box side">
 
-                  <select id="currencies">        
-                    <option value="usd" data-ccy="&#36">US Dollar</option>
-                    <option value="jpy" data-ccy="&#165">Japanese Yen</option>
-                    <option value="cny" data-ccy="&#165">Chinese Yuan</option>
-                    <option value="eur" data-ccy="&#8364">European Euro</option>
-                    <option value="krw" data-ccy="&#8361">Korean Won</option>
-                    <option value="gbp" data-ccy="&#163">British Pound</option> 
-                    <option value="rub" data-ccy="py6">Russian Ruble</option> 
-                    <option value="aud" data-ccy="A&#36">Australian Dollar</option>
-                    <option value="pln" data-ccy="&#164">Polish Zloty</option>  
-                    <option value="brl" data-ccy="R&#36">Brazilian Real</option>
-                    <option value="idr" data-ccy="Rp">Indonesian Rupiah</option> 
-                    <option value="cad" data-ccy="C&#36">Canadian Dollar</option> 
-                    <option value="mxn" data-ccy="&#8369">Mexican Peso</option>  
-                    <option value="zar" data-ccy="R">South African Rand</option>  
-                    <option value="thb" data-ccy="&#3647">Thai Baht</option> 
-                    <option value="ngn" data-ccy="&#8358">Nigerian Naira</option>  
-                    <option value="myr" data-ccy="RM">Malaysian Ringgit</option> 
-                    <option value="try" data-ccy="TL">Turkish Lira</option>
-                    <option value="vef" data-ccy="Bs">Venezuelan Bolivar</option>
-                    <option value="inr" data-ccy="&#8377">Indian Rupee</option>
-                    <option value="uah" data-ccy="&#8372">Ukranian Hryvnia</option> 
-                    <option value="sgd" data-ccy="S&#36">Singapore Dollar</option> 
-                    <option value="czk" data-ccy="&#164">Czech Koruna</option>
-                    <option value="pkr" data-ccy="RS">Pakistani Rupee</option>  
-                    <option value="hkd" data-ccy="HK&#36">Hong Kong Dollar</option>
-                    <option value="nzd" data-ccy="NZ&#36">New Zeland Dollar</option> 
-                    <option value="ils" data-ccy="&#8362">Israeli Shekel</option> 
-                    <option value="cop" data-ccy="&#36">Colombian Peso</option>  
-                    <option value="sek" data-ccy="kr">Swedish Krona</option>  
-                    <option value="nok" data-ccy="kr">Norwegian Krone</option> 
-                    <option value="kes" data-ccy="KSh">Kenyan Shilling</option>  
-                    <option value="ron" data-ccy="L">Romanian Leu</option>  
-                  </select>
+              <div class="side-content">
 
-                </form>
-                
-                <h2>Results</h2>
-                
-                <div class="js-search-results"> 
+                <a href="https://www.youtube.com/watch?annotation_id=annotation_2959030587&feature=iv&src_vid=yTxmR0n6sCc&v=R2zXZOsPQ1Q" target="_blank">                
+                  <span>Bitcoin Basics: A Video Tutorial</span>
+<!--                   <img class="thumbnail" src="images/bitcoin-fire.jpg" alt="Youtube: Bitcoin for Dummies"> -->
+                </a>
+              </div>
+       
+            </div>
+          </div>  <!--  col-3 -->
 
-                    <div class="js-result-bitcoin">
-                      <p>
-                        <span>Bitcoin</span>&emsp;<span>US Dollar</span>
-                      </p>
-                      <p>
-                        <span>&#3647 1</span>&emsp;<span>$ 2743.040506</span>
-                      </p>
-                    </div>  
-                </div>              
+        </div>   <!--  row -->
 
-        </main>   
+      </main>  
 
-      </div>  <!--  clearfix  -->
+<!-- 
 
-<!--  <footer>
-        <a href="http://bitcoinsimplified.org/">Bitcoin Simplified</a> <br>
-        <a href="http://bitcoinsimplified.org/learn-more/history/">The History of Bitcoin</a> <br>
-      </footer> -->
+      <banner class="header" id=”content_title”>
+        <h1 class="headerReplacement">Bitcoin Currency Exchange Rate</h1>
+         <h1>
+          <img src=”images/bitcoin-header.jpg” alt=”Bitcoin Currency Exchange Rate”>Bitcoin Currency Exchange Rate
+        </h1>    
+      </banner> 
+-->
+
       <script src="index.js"></script>
     </body>
 </html>
