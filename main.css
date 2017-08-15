@@ -16,7 +16,7 @@ html {
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
     ),
-  url(images/bitcoin-thumbnail.jpg);
+    url(images/bitcoin.jpg);  
   background-size: cover;
 }
 
@@ -36,7 +36,7 @@ html {
 
 .thumbnail {
 /*  display: inline-block;*/
-  width: 80%;
+/*  width: 80%;*/
   padding: 7px;
   margin: 10% auto;
 } 
@@ -89,9 +89,10 @@ html {
 }
 
 .data {
-  border: 1px solid #FEFEFE;
-  border-radius: 4px;
-  padding: .3em;
+  text-align: left;
+/**  border: 1px solid #FEFEFE;
+  border-radius: 4px;/
+/*  padding: .3em;*/
 }
 
 .center {
