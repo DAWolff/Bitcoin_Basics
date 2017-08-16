@@ -16,7 +16,7 @@ html {
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
     ),
-    url(images/bitcoin.jpg);  
+    url(images/bitcoin-fire.jpg);  
   background-size: cover;
 }
 
@@ -25,10 +25,10 @@ html {
 }
 
 .header-replacement {
-  width: 500px; 
+  width: 600px; 
   height: 250px;
-  margin: 0 auto;
-  background: url("images/bitcoin-steel-orig.png");
+  margin: 20px auto;
+  background: url("images/bitcoinSteel.png");
   background-size: cover;
   background-repeat: none; 
   text-indent: -9999px;

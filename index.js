@@ -26,182 +26,183 @@ const CCY_DATA = [
     data: {
       symbol: "&#8364",
       name: "European Euro",
-      image: " " }
+      image: "europe.jpg" }
   },
   { currency: "krw",
     data: {   
       symbol: "&#8361",
       name: "Korean Won",
-      image: "" } 
+      image: "korea.jpg" } 
   },  
   { currency: "gbp",  
     data: {   
       symbol: "&#163",
       name: "British Pound",   
-      image: "url(images/bigBen.jpg" }  
+      image: "bigBen.jpg" }  
   },
   { currency: "rub",  
     data: {   
       symbol: "py6",  
       name: "Russian Ruble",   
-      image: "" }  
+      image: "russia.jpg" }  
   }, 
   { currency: "aud",  
     data: {   
       symbol: "A&#36",  
       name: "Australian Dollar",   
-      image: "" } 
+      image: "australia.jpg" } 
   },
   { currency: "pln",  
     data: {   
       symbol: "&#164",  
       name: "Polish Zloty",   
-      image: "" }
+      image: "poland.jpg" }
   },  
   { currency: "brl",  
     data: {   
       symbol: "R&#36",  
       name: "Brazilian Real",   
-      image: "" }  
+      image: "brazil.jpg" }  
   },
   { currency: "idr",  
     data: {   
       symbol: "Rp",  
       name: "Indonesian Rupiah",   
-      image: "" }
+      image: "indonesia.jpg" }
   }, 
   { currency: "cad",  
     data: {   
       symbol: "C&#36",  
       name: "Canadian Dollar",   
-      image: "" }  
+      image: "canada.jpg" }  
   }, 
   { currency: "mxn",  
     data: {   
       symbol: "&#8369",  
       name: "Mexican Peso",   
-      image: "" }  
+      image: "mexico.jpg" }  
   },  
   { currency: "zar",  
     data: {   
       symbol: "R",  
       name: "South African Rand",  
-      image: "" }  
+      image: "sa.jpg" }  
   },  
   { currency: "thb",  
     data: {   
       symbol: "&#3647",  
       name: "Thai Baht",   
-      image: "" }  
+      image: "thailand.jpg" }  
   }, 
   { currency: "ngn",  
     data: {   
       symbol: "&#8358",  
       name: "Nigerian Naira",   
-      image: "" }
+      image: "nigeria.jpg" }
   },  
   { currency: "myr",  
     data: {   
       symbol: "RM",  
       name: "Malaysian Ringgit",  
-      image: "" }  
+      image: "malaysia.jpg" }  
   }, 
   { currency: "try",  
     data: {   
       symbol: "TL",  
       name: "Turkish Lira",   
-      image: "" }  
+      image: "turkey.jpg" }  
   },
   { currency: "vef",  
     data: {   
       symbol: "Bs",  
       name: "Venezuelan Bolivar",  
-      image: "" }  
+      image: "venezuela.jpg" }  
   },
   { currency: "inr",  
     data: {   
       symbol: "&#8377",  
       name: "Indian Rupee",   
-      image: "" }  
+      image: "india.jpg" }  
   },
   { currency: "uah",  
     data: {   
       symbol: "&#8372",  
       name: "Ukranian Hryvnia",   
-      image: "" }  
+      image: "ukraine.jpg" }  
   }, 
   { currency: "sgd",  
     data: {   
       symbol: "S&#36",  
       name: "Singapore Dollar",   
-      image: "" }  
+      image: "singapore.jpg" }  
   }, 
   { currency: "czk",  
     data: {   
       symbol: "&#164",  
       name: "Czech Koruna",   
-      image: "" }  
+      image: "czech.jpg" }  
   },
   { currency: "pkr",  
     data: {   
       symbol: "RS",  
       name: "Pakistani Rupee",   
-      image: "" }  
+      image: "pakistan.jpg" }  
   },  
   { currency: "hkd",  
     data: {   
       symbol: "HK&#36",  
       name: "Hong Kong Dollar",   
-      image: "" }  
+      image: "hongkong.jpg" }  
   },
   { currency: "nzd",  
     data: {   
       symbol: "NZ&#36",  
       name: "New Zeland Dollar",   
-      image: "" }  
+      image: "newzeland.jpg" }  
   }, 
   { currency: "ils",  
     data: {   
       symbol: "&#8362",  
       name: "Israeli Shekel",   
-      image: "" }  
+      image: "israel.jpg" }  
   }, 
   { currency: "cop",  
     data: {   
       symbol: "COL&#36",  
       name: "Colombian Peso",   
-      image: "" }  
+      image: "colombia.jpg" }  
     },  
   { currency: "sek",  
     data: {   
       symbol: "kr",  
       name: "Swedish Krona",   
-      image: "" }  
+      image: "sweden.jpg" }  
   },  
   { currency: "nok",  
     data: {   
       symbol: "kr",  
       name: "Norwegian Krone",   
-      image: "" }  
+      image: "norway.jpg" }  
   }, 
   { currency: "kes",  
     data: {   
       symbol: "KSh",  
       name: "Kenyan Shilling",   
-      image: "" }  
+      image: "kenya.jpg" }  
   },  
   { currency: "ron",  
     data: {   
       symbol: "L",  
       name: "Romanian Leu",   
-      image: "" }  
+      image: "romania.jpg" }  
   },  
 ];
 
 
-var SELECTED_CURRENCY = "";  // cspa/btc/usd/'
+var SELECTED_CURRENCY = "";   
 var SELECTED_CURRENCY_NAME = "";
 var SELECTED_CURRENCY_SYM = "";
+var SELECTED_CURRENCY_IMAGE = "";
 var CSPA_CCY_VALUE = 0;
 var CSPA_CHANGE_24H = 0;
 var CSPA_CHANGE_24H_PCT = 0;
@@ -234,7 +235,7 @@ function extractResults(json) {
 
   console.log(SELECTED_CURRENCY + ": " + CSPA_CCY_VALUE);
 
-  // renderResults();
+  renderResults();
 }
 
 
@@ -253,7 +254,7 @@ function extractSecondResults(json) {
 
   console.log("call 2 BTC " + SELECTED_CURRENCY + ": " + CSPA_BTC_VALUE);
 
-  renderResults();
+  // renderResults();
 }
 
 
@@ -267,13 +268,13 @@ function getDataFromApi(ccy) {
     document.body.appendChild(fromBitcoinApiScript);
     fromBitcoinApiScript.parentNode.removeChild(fromBitcoinApiScript);
 
-//  Call again for CCY ==> BTC conversion 
+//  Call again for CCY ==> BTC conversion   only works for USD
 
-    var toBitcoinApiUrl = BITCOIN_API_URL + ccy + '/btc/?callback=extractSecondResults';
-    var toBitcoinApiScript = document.createElement('script');
-    toBitcoinApiScript.src = toBitcoinApiUrl;
-    document.body.appendChild(toBitcoinApiScript);
-    toBitcoinApiScript.parentNode.removeChild(toBitcoinApiScript);
+    // var toBitcoinApiUrl = BITCOIN_API_URL + ccy + '/btc/?callback=extractSecondResults';
+    // var toBitcoinApiScript = document.createElement('script');
+    // toBitcoinApiScript.src = toBitcoinApiUrl;
+    // document.body.appendChild(toBitcoinApiScript);
+    // toBitcoinApiScript.parentNode.removeChild(toBitcoinApiScript);
 
 }
 
@@ -281,6 +282,9 @@ function getDataFromApi(ccy) {
 function renderResults() {     
 
   console.log("renderResults ran");
+
+  CSPA_CCY_VALUE = numberWithCommas(CSPA_CCY_VALUE);
+  // CSPA_CHANGE_24H = numberWithCommas(CSPA_CHANGE_24H);
 
   let results = `
     <div class="js-results-bitcoin"> 
@@ -301,11 +305,12 @@ function renderResults() {
      </p> 
      <p>  
        <div class="results data">Percentage change</div>  
-       <div class="results data">&nbsp ${CSPA_CHANGE_24H_PCT}</div> 
+       <div class="results data">&nbsp ${CSPA_CHANGE_24H_PCT} &nbsp %</div> 
      </p> 
     </div>  
 
     `; 
+
     // <div class="js-results-ccy2">     //  CSPA_CHANGE_24H_PCT
     //  <p class="line2"> 
     //    <div class="results label" id="js-from-ccy-lbl">${SELECTED_CURRENCY_NAME} </div> 
@@ -329,12 +334,18 @@ function getDefaultCcy() {
   console.log("getDefaultCcy ran");
 
   SELECTED_CURRENCY = $('#currencies').val();
-  // SELECTED_CURRENCY_NAME = "US Dollar";
-  // SELECTED_CURRENCY_SYM = "&#36";
 
   let obj = CCY_DATA.find(o => o.currency === SELECTED_CURRENCY);
-  SELECTED_CURRENCY_NAME = obj.data.name; //  || "US Dollar";
-  SELECTED_CURRENCY_SYM = obj.data.symbol; //  || "&#36";
+  SELECTED_CURRENCY_NAME = obj.data.name || "US Dollar";
+  SELECTED_CURRENCY_SYM = obj.data.symbol || "&#36";
+  SELECTED_CURRENCY_IMAGE = obj.data.image;
+
+  if (SELECTED_CURRENCY_IMAGE) {
+    let bgUrl = $("html").css("background-image"); 
+    let front = bgUrl.indexOf("/images/");   
+    bgUrl = bgUrl.slice(0, front) + '/images/' + SELECTED_CURRENCY_IMAGE + '")';
+    $('html').css('background-image', bgUrl);
+  }
 
 
   getDataFromApi(SELECTED_CURRENCY);
@@ -346,12 +357,29 @@ function watchCcyChange() {
   $('#currencies').on('change', function(e) {
     console.log("watchCcyChange fired");
     SELECTED_CURRENCY = this.value;
-    var ccyId = document.getElementById("currencies");
-    SELECTED_CURRENCY_NAME = ccyId.options[ccyId.selectedIndex].text;
-    SELECTED_CURRENCY_SYM = ccyId.options[ccyId.selectedIndex].getAttribute('data-ccy');
+
+    let obj = CCY_DATA.find(o => o.currency === SELECTED_CURRENCY);
+    SELECTED_CURRENCY_NAME = obj.data.name || "Not found";
+    SELECTED_CURRENCY_SYM = obj.data.symbol || "Not found";
+    SELECTED_CURRENCY_IMAGE = obj.data.image || "bitcoin-fire.jpg";
+
+    if (SELECTED_CURRENCY_IMAGE) {
+      let bgUrl = $("html").css("background-image"); 
+      let front = bgUrl.indexOf("/images/");   
+      bgUrl = bgUrl.slice(0, front) + '/images/' + SELECTED_CURRENCY_IMAGE + '")';
+      $('html').css('background-image', bgUrl);
+    }
+
+    // var ccyId = document.getElementById("currencies");
+    // SELECTED_CURRENCY_NAME = ccyId.options[ccyId.selectedIndex].text;
+    // SELECTED_CURRENCY_SYM = ccyId.options[ccyId.selectedIndex].getAttribute('data-ccy');
 
     getDataFromApi(SELECTED_CURRENCY);
   });
+}
+
+function numberWithCommas(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 $(getDefaultCcy);
