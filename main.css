@@ -20,6 +20,11 @@ html {
   background-size: cover;
 }
 
+/*header {
+  border-bottom: 3px solid #400000;
+}*/
+
+
 .box {
   text-align: center;
 }
@@ -27,7 +32,7 @@ html {
 .header-replacement {
   width: 600px; 
   height: 250px;
-  margin: 20px auto;
+  margin: 0, auto;
   background: url("images/bitcoinSteel.png");
   background-size: cover;
   background-repeat: none; 
