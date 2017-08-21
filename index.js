@@ -228,9 +228,13 @@ function extractResults(json) {
   } 
 
   let cspaKey = "CSPA:BTC/" + SELECTED_CURRENCY.toUpperCase(); 
+
   CSPA_CCY_VALUE = Number(json.data[cspaKey].cspa);
-  CSPA_CCY_VALUE =   Math.round(CSPA_CCY_VALUE * 100) / 100;   // round to 2 decimals
+  CSPA_CCY_VALUE = Math.round(CSPA_CCY_VALUE * 100) / 100;   // round to 2 decimals
+
   CSPA_CHANGE_24H = json.data[cspaKey].cspa_change_24h;
+  CSPA_CHANGE_24H = Math.round(CSPA_CHANGE_24H * 100) / 100; 
+  
   CSPA_CHANGE_24H_PCT = json.data[cspaKey].cspa_change_24h_pct;
 
   console.log(SELECTED_CURRENCY + ": " + CSPA_CCY_VALUE);
@@ -284,46 +288,25 @@ function renderResults() {
   console.log("renderResults ran");
 
   CSPA_CCY_VALUE = numberWithCommas(CSPA_CCY_VALUE);
-  // CSPA_CHANGE_24H = numberWithCommas(CSPA_CHANGE_24H);
+
+
 
   let results = `
     <div class="js-results-bitcoin"> 
-     <p class="line1">  
-       <div class="results label">Bitcoin</div>  
-       <div class="results label center"></div>  
-       <div class="results label" id="js-to-ccy-lbl">${SELECTED_CURRENCY_NAME}</div> 
-     </p> 
-     <p>  
-       <div class="results data" id="js-from-bitcoin-amt">${BITCOIN_SYMBOL} &nbsp  
-                ${FROM_BITCOIN_AMT}  </div>    
-       <div class="results label center"> = </div> 
-         <div class="results data" id="js-to-ccy-amt">${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE} </div> 
-     </p>   
-     <p>  
-       <div class="results data">One day change in value</div>  
-       <div class="results data">&nbsp ${CSPA_CHANGE_24H}</div> 
-     </p> 
-     <p>  
-       <div class="results data">Percentage change</div>  
-       <div class="results data">&nbsp ${CSPA_CHANGE_24H_PCT} &nbsp %</div> 
-     </p> 
+       <p>  
+         <div class="results data">   
+           <div class="results data" id="js-to-ccy-amt">
+              ${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE}
+           </div>
+         </div>
+       </p>   
+       <p>  
+         <div class="results label">Change in value (1 day)</div>  
+         <div class="results amt">${SELECTED_CURRENCY_SYM} ${CSPA_CHANGE_24H}</div> 
+         <div class="results pct">${CSPA_CHANGE_24H_PCT}%</div> 
+       </p> 
     </div>  
-
     `; 
-
-    // <div class="js-results-ccy2">     //  CSPA_CHANGE_24H_PCT
-    //  <p class="line2"> 
-    //    <div class="results label" id="js-from-ccy-lbl">${SELECTED_CURRENCY_NAME} </div> 
-    //    <div class="results label center"></div> 
-    //    <div class="results label">Bitcoin</div>  
-    //  </p> 
-    //  <p> 
-    //    <div class="results data" id="js-from-ccy-amt">${USD_SYMBOL} &nbsp ${FROM_CCY_AMT} </div> 
-    //    <div class="results label center"> = </div>  
-    //    <div class="results data" id="js-to-bitcoin-amt">${BITCOIN_SYMBOL} &nbsp ${CSPA_BTC_VALUE} </div>  
-    //  </p>  
-    // </div> 
-
 
   $('.js-results').html(results);
 }
@@ -344,7 +327,10 @@ function getDefaultCcy() {
     let bgUrl = $("html").css("background-image"); 
     let front = bgUrl.indexOf("/images/");   
     bgUrl = bgUrl.slice(0, front) + '/images/' + SELECTED_CURRENCY_IMAGE + '")';
+    console.log(bgUrl);
     $('html').css('background-image', bgUrl);
+    $('html').css('background-size', 'cover');
+    $('html').css('background-repeat', 'no-repeat');
   }
 
 
@@ -368,6 +354,8 @@ function watchCcyChange() {
       let front = bgUrl.indexOf("/images/");   
       bgUrl = bgUrl.slice(0, front) + '/images/' + SELECTED_CURRENCY_IMAGE + '")';
       $('html').css('background-image', bgUrl);
+      $('html').css('background-size', 'cover');
+      $('html').css('background-repeat', 'no-repeat');
     }
 
     // var ccyId = document.getElementById("currencies");
