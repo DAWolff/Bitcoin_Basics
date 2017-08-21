@@ -1,28 +1,40 @@
 * { box-sizing: border-box; }
 
 html {
-  background-image: 
-    linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
-    ),
-    url(images/bitcoin-fire.jpg);  
+  background-image: url(images/bitcoin-fire.jpg);  
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 html,
 select {
-/*  font-family: 'Roboto', sans-sarif;*/
-/*  font-family: 'Crimson Text', serif;*/
   font-family: 'Montserrat', sans-serif;
   color: #f0f0f0; 
+/*  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;*/
+text-shadow:1px 1px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      0px 1px 0 #000,
+      1px 0px 0 #000,
+      0px -1px 0 #000,
+      -1px 0px 0 #000,
+      2px 2px 1px #f0f0f0;
 }
 
 header {
   padding-left: 6%;
+  padding-top: 10px;
 /*  border-bottom: 3px solid #400000;*/
 }
+
+#js-to-ccy-amt {
+  margin-left: 50%;
+  font-size: 1.5em;
+  text-align: right;
+
+}
+
 
 .select-ccy {
   display: inline-block;
@@ -34,7 +46,7 @@ header {
 .header-replacement {
   width: 650px; 
   height: 250px;
-  margin: 0, auto;
+  margin: 0;
   background: url("images/bitcoinSteel.png");
   background-size: cover;
   background-repeat: none; 

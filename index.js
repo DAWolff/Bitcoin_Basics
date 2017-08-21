@@ -62,7 +62,7 @@ const CCY_DATA = [
     data: {   
       symbol: "R&#36",  
       name: "Brazilian Real",   
-      image: "brazil.jpg" }  
+      image: "brasil.jpg" }  
   },
   { currency: "idr",  
     data: {   
@@ -234,7 +234,7 @@ function extractResults(json) {
 
   CSPA_CHANGE_24H = json.data[cspaKey].cspa_change_24h;
   CSPA_CHANGE_24H = Math.round(CSPA_CHANGE_24H * 100) / 100; 
-  
+
   CSPA_CHANGE_24H_PCT = json.data[cspaKey].cspa_change_24h_pct;
 
   console.log(SELECTED_CURRENCY + ": " + CSPA_CCY_VALUE);
@@ -295,7 +295,7 @@ function renderResults() {
     <div class="js-results-bitcoin"> 
        <p>  
          <div class="results data">   
-           <div class="results data" id="js-to-ccy-amt">
+           <div id="js-to-ccy-amt">
               ${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE}
            </div>
          </div>
@@ -329,8 +329,6 @@ function getDefaultCcy() {
     bgUrl = bgUrl.slice(0, front) + '/images/' + SELECTED_CURRENCY_IMAGE + '")';
     console.log(bgUrl);
     $('html').css('background-image', bgUrl);
-    $('html').css('background-size', 'cover');
-    $('html').css('background-repeat', 'no-repeat');
   }
 
 
@@ -358,17 +356,24 @@ function watchCcyChange() {
       $('html').css('background-repeat', 'no-repeat');
     }
 
-    // var ccyId = document.getElementById("currencies");
-    // SELECTED_CURRENCY_NAME = ccyId.options[ccyId.selectedIndex].text;
-    // SELECTED_CURRENCY_SYM = ccyId.options[ccyId.selectedIndex].getAttribute('data-ccy');
-
     getDataFromApi(SELECTED_CURRENCY);
   });
 }
+
 
 function numberWithCommas(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
+function loadSelectOptions() {
+  var options = $("#currencies");
+  $.each(CCY_DATA, function() {
+    options.append(new Option(this.data.name, this.currency));
+  });
+}
+
+
+$(loadSelectOptions);
 $(getDefaultCcy);
 $(watchCcyChange);
