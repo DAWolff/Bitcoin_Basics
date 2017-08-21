@@ -11,7 +11,7 @@ select {
   font-family: 'Montserrat', sans-serif;
   color: #f0f0f0; 
 /*  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;*/
-text-shadow:1px 1px 0 #000,
+  text-shadow:1px 1px 0 #000,
       -1px -1px 0 #000,
       1px -1px 0 #000,
       -1px 1px 0 #000,
@@ -25,7 +25,6 @@ text-shadow:1px 1px 0 #000,
 header {
   padding-left: 6%;
   padding-top: 10px;
-/*  border-bottom: 3px solid #400000;*/
 }
 
 #js-to-ccy-amt {
@@ -39,7 +38,7 @@ header {
 .select-ccy {
   display: inline-block;
   position: absolute;
-  top: 21%;
+  top: 22%;
   right: 20%;
 }
 
