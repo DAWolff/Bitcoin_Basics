@@ -207,9 +207,7 @@ var CSPA_CCY_VALUE = 0;
 var CSPA_CHANGE_24H = 0;
 var CSPA_CHANGE_24H_PCT = 0;
 var CSPA_BTC_VALUE = 0;
-var FROM_BITCOIN_AMT = "1";
-var FROM_CCY_AMT = "1.00";
-
+ 
 
 
 function renderErrorResult (msg) {
@@ -243,43 +241,15 @@ function extractResults(json) {
 }
 
 
-function extractSecondResults(json) {
-
-  console.log("extractSecondResults ran");
-
-  if (!json.success) {
-    console.log("JSON Message", JSON.stringify(json));
-    renderErrorResult(json.message);
-    return;
-  } 
-
-  let cspaKey = "CSPA:" + SELECTED_CURRENCY.toUpperCase() + "/BTC"; 
-  CSPA_BTC_VALUE = json.data[cspaKey].cspa;
-
-  console.log("call 2 BTC " + SELECTED_CURRENCY + ": " + CSPA_BTC_VALUE);
-
-  // renderResults();
-}
-
-
 function getDataFromApi(ccy) { 
 
     console.log("getDataFromApi ran");
 
-    var fromBitcoinApiUrl = BITCOIN_API_URL + 'btc/' + ccy + '/?callback=extractResults';
-    var fromBitcoinApiScript = document.createElement('script');
-    fromBitcoinApiScript.src = fromBitcoinApiUrl;
-    document.body.appendChild(fromBitcoinApiScript);
-    fromBitcoinApiScript.parentNode.removeChild(fromBitcoinApiScript);
-
-//  Call again for CCY ==> BTC conversion   only works for USD
-
-    // var toBitcoinApiUrl = BITCOIN_API_URL + ccy + '/btc/?callback=extractSecondResults';
-    // var toBitcoinApiScript = document.createElement('script');
-    // toBitcoinApiScript.src = toBitcoinApiUrl;
-    // document.body.appendChild(toBitcoinApiScript);
-    // toBitcoinApiScript.parentNode.removeChild(toBitcoinApiScript);
-
+    var bitcoinApiUrl = BITCOIN_API_URL + 'btc/' + ccy + '/?callback=extractResults';
+    var bitcoinApiScript = document.createElement('script');
+    bitcoinApiScript.src = bitcoinApiUrl;
+    document.body.appendChild(bitcoinApiScript);
+    bitcoinApiScript.parentNode.removeChild(bitcoinApiScript);
 }
 
 
@@ -289,26 +259,18 @@ function renderResults() {
 
   CSPA_CCY_VALUE = numberWithCommas(CSPA_CCY_VALUE);
 
-
-
   let results = `
-    <div class="js-results-bitcoin"> 
-       <p>  
-         <div class="results data">   
-           <div id="js-to-ccy-amt">
-              ${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE}
-           </div>
+         <div class="flex-container">   
+           <div class="flex-col1">&nbsp</div>
+           <div class="flex-col">Change since 1 day 
+              &nbsp &nbsp ${SELECTED_CURRENCY_SYM} ${CSPA_CHANGE_24H}
+              &nbsp &nbsp ${CSPA_CHANGE_24H_PCT}%
+           </div> 
+           <div class="flex-col amt">${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE}</div> 
          </div>
-       </p>   
-       <p>  
-         <div class="results label">Change in value (1 day)</div>  
-         <div class="results amt">${SELECTED_CURRENCY_SYM} ${CSPA_CHANGE_24H}</div> 
-         <div class="results pct">${CSPA_CHANGE_24H_PCT}%</div> 
-       </p> 
-    </div>  
     `; 
 
-  $('.js-results').html(results);
+  $('.main-content').html(results);
 }
 
 
@@ -330,7 +292,6 @@ function getDefaultCcy() {
     console.log(bgUrl);
     $('html').css('background-image', bgUrl);
   }
-
 
   getDataFromApi(SELECTED_CURRENCY);
 }
