@@ -211,7 +211,16 @@ var CSPA_BTC_VALUE = 0;
 
 
 function renderErrorResult (msg) {
-    alert(msg);
+  let results = `
+           <p class="tab">Change since 1 day 
+              &nbsp &nbsp ${SELECTED_CURRENCY_SYM} 0 
+              &nbsp &nbsp 0.0% &nbsp &nbsp &nbsp OOPS!
+           </p> 
+           <p class="tab">There's been a horrible mistake!  (seems our source of data is unavailable)</p>
+           <p class="tab">Here is the error message: &nbsp ${msg}</p> 
+    `; 
+
+  $('.main-content').html(results);
 }
 
 
@@ -247,9 +256,15 @@ function getDataFromApi(ccy) {
 
     var bitcoinApiUrl = BITCOIN_API_URL + 'btc/' + ccy + '/?callback=extractResults';
     var bitcoinApiScript = document.createElement('script');
-    bitcoinApiScript.src = bitcoinApiUrl;
-    document.body.appendChild(bitcoinApiScript);
-    bitcoinApiScript.parentNode.removeChild(bitcoinApiScript);
+
+    try {
+        bitcoinApiScript.src = bitcoinApiUrl;
+        document.body.appendChild(bitcoinApiScript);
+        bitcoinApiScript.parentNode.removeChild(bitcoinApiScript);
+    }
+    catch(err) {
+        renderErrorResult(err.message);
+    }
 }
 
 
@@ -336,5 +351,10 @@ function loadSelectOptions() {
 
 
 $(loadSelectOptions);
+
+window.addEventListener("error", (event) => {
+    renderErrorResult (event);
+});
+
 $(getDefaultCcy);
 $(watchCcyChange);
