@@ -275,14 +275,9 @@ function renderResults() {
   CSPA_CCY_VALUE = numberWithCommas(CSPA_CCY_VALUE);
 
   let results = `
-         <div class="flex-container">   
-           <div class="flex-col1">&nbsp</div>
-           <div class="flex-col">Change since 1 day 
-              &nbsp &nbsp ${SELECTED_CURRENCY_SYM} ${CSPA_CHANGE_24H}
-              &nbsp &nbsp ${CSPA_CHANGE_24H_PCT}%
-           </div> 
-           <div class="flex-col amt">${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE}</div> 
-         </div>
+        <div class="text amt">${SELECTED_CURRENCY_SYM} &nbsp ${CSPA_CCY_VALUE}</div> 
+        <div class="text change">Change since 1 day &nbsp &nbsp ${CSPA_CHANGE_24H}  
+               &nbsp &nbsp ${CSPA_CHANGE_24H_PCT}%</div>
     `; 
 
   $('.main-content').html(results);
