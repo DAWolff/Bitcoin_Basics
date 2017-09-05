@@ -42,7 +42,7 @@ const CCY_DATA = [
   },
   { currency: "rub",
     data: {
-      symbol: "py6",
+      symbol: "&#8381",
       name: "Russian Ruble",
       image: "russia.jpg" }
   },
@@ -108,7 +108,7 @@ const CCY_DATA = [
   },
   { currency: "try",
     data: {
-      symbol: "TL",
+      symbol: "&#8378",
       name: "Turkish Lira",
       image: "turkey.jpg" }
   },
@@ -144,7 +144,7 @@ const CCY_DATA = [
   },
   { currency: "pkr",
     data: {
-      symbol: "RS",
+      symbol: "Rs",
       name: "Pakistani Rupee",
       image: "pakistan.jpg" }
   },
