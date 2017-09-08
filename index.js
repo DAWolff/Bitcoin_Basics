@@ -321,9 +321,7 @@ function watchCcyChange() {
     SELECTED_CURRENCY_IMAGE = obj.data.image || "bitcoin-fire.jpg";
 
     if (SELECTED_CURRENCY_IMAGE) {
-      let bgUrl = $("html").css("background-image");
-      let front = bgUrl.indexOf("/images/");
-      bgUrl = bgUrl.slice(0, front) + '/images/' + SELECTED_CURRENCY_IMAGE + '")';
+      let bgUrl = `url("images/${SELECTED_CURRENCY_IMAGE}")`;
       $('html').css('background-image', bgUrl);
       $('html').css('background-size', 'cover');
       $('html').css('background-repeat', 'no-repeat');

@@ -120,8 +120,27 @@ header {
 @media (min-width:480px) {}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-@media (min-width:600px) {
+@media (min-width:600px) {}
 
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:801px) {
+  .header-replacement {
+    width: 650px;
+    height: 250px;
+    margin: 0;
+    background: url("images/bitcoinSteel.png");
+    background-size: cover;
+    background-repeat: none;
+    text-indent: -9999px;
+  }
+  
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (min-width:1025px) {}
+
+/* at 1100, there is room for the currency dropdown in the header */
+@media (min-width:1100px) {
   .header-replacement {
     width: 650px;
     height: 250px;
@@ -185,12 +204,6 @@ header {
     height: 12vw;
   }
 }
-
-/* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (min-width:801px) {}
-
-/* big landscape tablets, laptops, and desktops */
-@media (min-width:1025px) {}
 
 /* hi-res laptops and desktops */
 @media (min-width:1281px) {}
