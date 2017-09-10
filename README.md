@@ -1,9 +1,13 @@
+## Bitcoin Basics
+
+Screen Shot:  https://www.flickr.com/photos/156091700@N03/36979630772/in/dateposted-public/
+
 ## Synopsis
 
 An easy-peasy Bitcoin basics website.
 Get the current Bitcoin exchange rate versus the highest-volume traded currencies.
-website starts with 1 Bitcoin versus the US Dollar.
-Links to Bitcoin beginner's videos and websites with additional information.
+Website starts with 1 Bitcoin versus the US Dollar.
+Links to beginners' videos and to websites with additional information on Bitcoin.
 
 ## Notes
 
@@ -12,6 +16,10 @@ A landing page was not included, since:
 * It isn't necessary
 * It would make the site boring
 * The entire site is one page
+
+## Technology
+
+HTML, CSS, JavaScript, jQuery
 
 ## Code Example
 
@@ -27,7 +35,10 @@ To make it simple to get started with Bitcoin-- to understand how it works, and 
 ## Installation
 
 Project is at GitHub Pages:
-		 https://dawolff.github.io/Capstone-Project-1---Bitcoin/
+		 https://dawolff.github.io/Bitcoin_Basics/
+
+Code is at GitHub:
+		 https://github.com/DAWolff/Bitcoin_Basics.git
 
 
 ## API Reference
