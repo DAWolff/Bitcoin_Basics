@@ -12,10 +12,6 @@ Links to beginners' videos and to websites with additional information on Bitcoi
 ## Notes
 
 Responsive from 320px to 1600px.  (Note that I did not style for mobile landscape).
-A landing page was not included, since:
-* It isn't necessary
-* It would make the site boring
-* The entire site is one page
 
 ## Technology
 
