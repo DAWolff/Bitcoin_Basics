@@ -60,7 +60,7 @@ header {
     min-width: 150px;
     display: block;
     position: absolute;
-    top: 100%;
+    top: 110%;
     right: 20%;
   }
 
@@ -71,7 +71,7 @@ header {
     margin-top: 1rem;
     display: block;
     position: absolute;
-    top: 150%;
+    top: 160%;
     right: 20%;
   }
 
@@ -79,7 +79,7 @@ header {
     font-size: 2rem;
     position: relative;
     position: absolute;
-    top: 40%;
+    top: 42%;
     left: 10vw;
     padding-right: 3vw;
   }
@@ -120,10 +120,7 @@ header {
 @media (min-width:480px) {}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-@media (min-width:600px) {}
-
-/* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (min-width:801px) {
+@media (min-width:600px) {
   .header-replacement {
     width: 650px;
     height: 250px;
@@ -134,21 +131,66 @@ header {
     text-indent: -9999px;
   }
 
+  #select-ccy {
+    display: block;
+    position: absolute;
+    top: 90%;
+    right: 20%;
+  }
+
+  #currencies {
+    background-color: #000;
+    height: 50px;
+    padding: .1em;
+    font-size: 2em;
+    min-width: 150px;
+    display: block;
+    position: relative;
+    /*top: 120%;
+    right: 20%;*/
+  }
+
+  #amount {
+    font-size: 3rem;
+    text-align: right;
+    display: block;
+    margin-top: 1rem;
+    display: block;
+    position: relative;
+    top: 150%;
+    right: 20%;
+  }
+
+  #js-main-content {
+    font-size: 3rem;
+    position: relative;
+    position: absolute;
+    top: 52%;
+    left: 10vw;
+    padding-right: 3vw;
+  }
+
+  .js-main-content {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 10vw;
+    padding-right: 3vw;
+  }
 }
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:801px) {}
 
 /* big landscape tablets, laptops, and desktops */
 @media (min-width:1025px) {}
 
 /* at 1100, there is room for the currency dropdown in the header */
 @media (min-width:1100px) {
-  .header-replacement {
-    width: 650px;
-    height: 250px;
-    margin: 0;
-    background: url("images/bitcoinSteel.png");
-    background-size: cover;
-    background-repeat: none;
-    text-indent: -9999px;
+
+  #select-ccy {
+    display: relative;
+    position: static;
   }
 
   #currencies {
@@ -175,7 +217,7 @@ header {
   }
 
   #js-main-content {
-    font-size: 3rem;
+    font-size: 4rem;
     position: static;
     padding: 0 9%;
     margin-right: 1px;

@@ -57,6 +57,7 @@ h2 {
 
   #landing-content {
     margin: 0;
+    margin-top: 7%;
     margin-left: 5%;
     font-size: 1.7em;
   }
@@ -104,6 +105,10 @@ h2 {
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (min-width:600px) {
+
+  header {
+    margin: auto;
+  }
   .header-replacement {
     width: 500px;
     height: 200px;
@@ -115,7 +120,7 @@ h2 {
 
   #landing-content {
     margin: 0;
-    margin-left: 17%;
+    margin-left: 14%;
     font-size: 3em;
   }
 
